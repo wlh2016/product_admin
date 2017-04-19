@@ -20,6 +20,7 @@ import com.thinkgem.jeesite.modules.sys.entity.Menu;
 import com.thinkgem.jeesite.modules.sys.entity.Role;
 import com.thinkgem.jeesite.modules.sys.entity.User;
 import com.thinkgem.jeesite.modules.sys.security.SystemAuthorizingRealm.Principal;
+import sun.awt.ModalExclude;
 
 /**
  * 用户工具类
@@ -38,6 +39,7 @@ public class UserUtils {
 
 	public static final String CACHE_ROLE_LIST = "roleList";
 	public static final String CACHE_MENU_LIST = "menuList";
+	public static final String CACHE_MODULE_MENU_LIST = "moduleMenuList";
 	
 	/**
 	 * 根据ID获取用户
@@ -146,6 +148,24 @@ public class UserUtils {
 			putCache(CACHE_MENU_LIST, menuList);
 		}
 		return menuList;
+	}
+
+	/**
+	 * 获取所有用户授权的一级菜单
+	 */
+	public static List<Menu> getModuleMenuList() {
+		List<Menu> moduleMenuList = (List<Menu>) getCache(CACHE_MODULE_MENU_LIST);
+		if(moduleMenuList == null) {
+			User user = getUser();
+			if(user != null) {
+				Menu m = new Menu();
+				m.setUserId(user.getId());
+				m.setDelFlag("0");
+				moduleMenuList = menuDao.findAllModuleMenuList(m);
+			}
+			putCache(CACHE_MODULE_MENU_LIST, moduleMenuList);
+		}
+		return moduleMenuList;
 	}
 	
 	/**
