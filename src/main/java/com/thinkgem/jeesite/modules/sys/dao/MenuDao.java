@@ -24,5 +24,7 @@ public interface MenuDao extends CrudDao<Menu> {
 	public int updateParentIds(Menu menu);
 	
 	public int updateSort(Menu menu);
+
+	public List<Menu> findAllModuleMenuList(Menu menu);
 	
 }

@@ -79,6 +79,14 @@
     <function-signature>java.util.List getMenuList()</function-signature>
     <example>${fns:getMenuList()}</example>  
   </function>
+
+  <function>
+    <description>获取当前用户的菜单对象列表</description>
+    <name>getModuleMenuList</name>
+    <function-class>com.thinkgem.jeesite.modules.sys.utils.UserUtils</function-class>
+    <function-signature>java.util.List getModuleMenuList()</function-signature>
+    <example>${fns:getModuleMenuList()}</example>
+  </function>
   
   <function>
     <description>获取当前用户的区域对象列表</description>
