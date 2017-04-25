@@ -14,8 +14,8 @@ public class Customer extends DataEntity<Customer> {
     private String name;
     private String phone;
     private String address;
-    private long nonDeposit;        // 未结款
-    private long alreadySettle;     // 已结款
+    private int nonDeposit;        // 未结款
+    private int alreadySettle;     // 已结款
     private boolean delStatus;
 
     @JsonIgnore
@@ -45,19 +45,19 @@ public class Customer extends DataEntity<Customer> {
         this.address = address;
     }
 
-    public long getNonDeposit() {
+    public int getNonDeposit() {
         return nonDeposit;
     }
 
-    public void setNonDeposit(long nonDeposit) {
+    public void setNonDeposit(int nonDeposit) {
         this.nonDeposit = nonDeposit;
     }
 
-    public long getAlreadySettle() {
+    public int getAlreadySettle() {
         return alreadySettle;
     }
 
-    public void setAlreadySettle(long alreadySettle) {
+    public void setAlreadySettle(int alreadySettle) {
         this.alreadySettle = alreadySettle;
     }
 

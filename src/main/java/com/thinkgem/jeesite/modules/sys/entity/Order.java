@@ -3,20 +3,19 @@ package com.thinkgem.jeesite.modules.sys.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.thinkgem.jeesite.common.persistence.DataEntity;
 
-import java.util.Date;
 import java.util.List;
 
 /**
  * @author Tony_Wu
- * @date 2017-4-24
+ * @String 2017-4-24
  */
 public class Order extends DataEntity<Order> {
 
-    private Date placeOrderDate;
-    private Date deliveryGoodsDate;
-    private float totalPrice;       // 总价
-    private long nonDeposit;        // 未结款
-    private long alreadySettle;     // 已结款
+    private String placeOrderDate;
+    private String deliveryGoodsDate;
+    private int totalPrice;       // 总价
+    private int nonDeposit;        // 未结款
+    private int alreadySettle;     // 已结款
     private boolean finishedStatus;
     private boolean delStatus;
 
@@ -25,43 +24,43 @@ public class Order extends DataEntity<Order> {
     @JsonIgnore
     private List<Brush> brushs;
 
-    public Date getPlaceOrderDate() {
+    public String getPlaceOrderDate() {
         return placeOrderDate;
     }
 
-    public void setPlaceOrderDate(Date placeOrderDate) {
+    public void setPlaceOrderDate(String placeOrderDate) {
         this.placeOrderDate = placeOrderDate;
     }
 
-    public Date getDeliveryGoodsDate() {
+    public String getDeliveryGoodsDate() {
         return deliveryGoodsDate;
     }
 
-    public void setDeliveryGoodsDate(Date deliveryGoodsDate) {
+    public void setDeliveryGoodsDate(String deliveryGoodsDate) {
         this.deliveryGoodsDate = deliveryGoodsDate;
     }
 
-    public float getTotalPrice() {
+    public int getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(float totalPrice) {
+    public void setTotalPrice(int totalPrice) {
         this.totalPrice = totalPrice;
     }
 
-    public long getNonDeposit() {
+    public int getNonDeposit() {
         return nonDeposit;
     }
 
-    public void setNonDeposit(long nonDeposit) {
+    public void setNonDeposit(int nonDeposit) {
         this.nonDeposit = nonDeposit;
     }
 
-    public long getAlreadySettle() {
+    public int getAlreadySettle() {
         return alreadySettle;
     }
 
-    public void setAlreadySettle(long alreadySettle) {
+    public void setAlreadySettle(int alreadySettle) {
         this.alreadySettle = alreadySettle;
     }
 

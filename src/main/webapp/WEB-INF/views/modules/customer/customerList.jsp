@@ -33,11 +33,13 @@
 	<form:form id="searchForm" action="${ctx}/sys/customer" method="post" class="breadcrumb form-search">
 		<input id="pageNo" name="pageNo" type="hidden" value="${page.pageNo}"/>
 		<input id="pageSize" name="pageSize" type="hidden" value="${page.pageSize}"/>
-		<div>
-			<label>姓名：</label><input id="name" name="name" type="text" maxlength="20" class="input-mini" value="${customer.name}"/>
-			<label>手机：</label><input id="phone" name="phone" type="text" maxlength="20" class="input-mini" value="${customer.phone}"/>
-			<label>地址：</label><input id="address" name="address" type="text" maxlength="40" class="input-mini" value="${customer.address}"/>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="btnSubmit" class="btn btn-primary" type="submit" value="查询"/>
+		<div class="controls">
+			<label>姓名：</label><input id="name" name="name" type="text" maxlength="20" class="input-medium" value="${customer.name}"/>
+			<label>手机：</label><input id="phone" name="phone" type="text" maxlength="20" class="input-medium" value="${customer.phone}"/>
+			<label>地址：</label><input id="address" name="address" type="text" maxlength="40" class="input-large" value="${customer.address}"/>
+		</div>
+		<div class="controls" style="margin-top: 10px;">
+			&nbsp;&nbsp;<input id="btnSubmit" class="btn btn-primary" type="submit" value="查询"/>
 			&nbsp;&nbsp;&nbsp;<input class="btn btn-primary" type="button" value="重置" onclick="resetForm();"/>
 		</div>
 	</form:form>
