@@ -54,7 +54,7 @@
 					<td>${c.alreadySettle}</td>
 					<td>${c.nonDeposit}</td>
 					<td>
-						<a href="${ctx}/sys/order/forCustomer/${c.id}">订单列表</a>&nbsp;&nbsp;
+						<a href="${ctx}/sys/order">订单明细</a>&nbsp;&nbsp;
 						<a>编辑</a>&nbsp;&nbsp;
 						<a>删除</a>
 					</td>

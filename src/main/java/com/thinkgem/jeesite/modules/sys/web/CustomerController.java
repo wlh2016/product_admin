@@ -24,6 +24,14 @@ public class CustomerController extends BaseController {
     @Autowired
     private CustomerService customerService;
 
+    /**
+     * 查看客户列表
+     * @param customer
+     * @param request
+     * @param response
+     * @param model
+     * @return
+     */
     @RequestMapping(value = {"/list", ""})
     public String list(Customer customer, HttpServletRequest request, HttpServletResponse response, Model model) {
         Page<Customer> page = customerService.findPage(new Page<Customer>(request, response), customer);

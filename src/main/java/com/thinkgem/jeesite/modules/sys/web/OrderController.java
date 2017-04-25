@@ -4,6 +4,7 @@ import com.thinkgem.jeesite.common.web.BaseController;
 import com.thinkgem.jeesite.modules.sys.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -12,10 +13,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 
 @Controller
-@RequestMapping(value = "order")
+@RequestMapping(value = "${adminPath}/sys/order")
 public class OrderController extends BaseController {
 
     @Autowired
     private OrderService orderService;
+
+    @RequestMapping(value = "/forCustomer/{cid}")
+    public String findOrdersByCustomerId(@PathVariable("cid") Integer cid) {
+
+
+        return "modules/order/orderList";
+    }
+
 
 }
