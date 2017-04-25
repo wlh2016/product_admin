@@ -1,6 +1,7 @@
 package com.thinkgem.jeesite.modules.sys.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.thinkgem.jeesite.common.persistence.DataEntity;
 
 import java.util.Date;
 import java.util.List;
@@ -9,28 +10,20 @@ import java.util.List;
  * @author Tony_Wu
  * @date 2017-4-24
  */
-public class Order {
+public class Order extends DataEntity<Order> {
 
-    private long id;
     private Date placeOrderDate;
     private Date deliveryGoodsDate;
     private float totalPrice;       // 总价
     private long nonDeposit;        // 未结款
     private long alreadySettle;     // 已结款
     private boolean finishedStatus;
+    private boolean delStatus;
 
     @JsonIgnore
     private Customer customer;
     @JsonIgnore
     private List<Brush> brushs;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public Date getPlaceOrderDate() {
         return placeOrderDate;
@@ -96,16 +89,24 @@ public class Order {
         this.brushs = brushs;
     }
 
+    public boolean isDelStatus() {
+        return delStatus;
+    }
+
+    public void setDelStatus(boolean delStatus) {
+        this.delStatus = delStatus;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
-                "id=" + id +
-                ", placeOrderDate=" + placeOrderDate +
+                "placeOrderDate=" + placeOrderDate +
                 ", deliveryGoodsDate=" + deliveryGoodsDate +
                 ", totalPrice=" + totalPrice +
                 ", nonDeposit=" + nonDeposit +
                 ", alreadySettle=" + alreadySettle +
                 ", finishedStatus=" + finishedStatus +
+                ", delStatus=" + delStatus +
                 '}';
     }
 }

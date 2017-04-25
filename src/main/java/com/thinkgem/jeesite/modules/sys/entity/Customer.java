@@ -1,31 +1,25 @@
 package com.thinkgem.jeesite.modules.sys.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.thinkgem.jeesite.common.persistence.DataEntity;
+
 import java.util.List;
 
 /**
  * @author Tony_Wu
  * @date 2017-4-25
  */
-public class Customer {
+public class Customer extends DataEntity<Customer> {
 
-    private long id;
     private String name;
     private String phone;
     private String address;
     private long nonDeposit;        // 未结款
     private long alreadySettle;     // 已结款
+    private boolean delStatus;
 
     @JsonIgnore
     private List<Order> orders;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -67,6 +61,14 @@ public class Customer {
         this.alreadySettle = alreadySettle;
     }
 
+    public boolean isDelStatus() {
+        return delStatus;
+    }
+
+    public void setDelStatus(boolean delStatus) {
+        this.delStatus = delStatus;
+    }
+
     public List<Order> getOrders() {
         return orders;
     }
@@ -78,12 +80,12 @@ public class Customer {
     @Override
     public String toString() {
         return "Customer{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+                "name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
                 ", nonDeposit=" + nonDeposit +
                 ", alreadySettle=" + alreadySettle +
+                ", delStatus=" + delStatus +
                 '}';
     }
 }

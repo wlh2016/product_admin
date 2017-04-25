@@ -8,7 +8,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
-import com.thinkgem.jeesite.modules.sys.entity.Flusher;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -172,25 +171,6 @@ public class MenuController extends BaseController {
 		return mapList;
 	}
 
-	/**
-	 * 本次发货商品详情界面
-	 * @return
-	 */
-	@RequestMapping(value = "countPrice", method = RequestMethod.GET)
-	public String countPrice() {
-
-		return "modules/sys/countPrice";
-	}
-
-	/**
-	 * 计算本次发货商品总价
-	 * @return
-	 */
-	@RequestMapping(value = "countPrice", method = RequestMethod.GET)
-	public String countPrices(Flusher flusher) {
-
-		return "modules/sys/countPrice";
-	}
 
 
 }
