@@ -1,6 +1,7 @@
 package com.thinkgem.jeesite.modules.sys.web;
 
 import com.thinkgem.jeesite.common.persistence.Page;
+import com.thinkgem.jeesite.common.web.BaseController;
 import com.thinkgem.jeesite.modules.sys.entity.Customer;
 import com.thinkgem.jeesite.modules.sys.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Controller
 @RequestMapping(value = "${adminPath}/sys/customer")
-public class CustomerController {
+public class CustomerController extends BaseController {
 
     @Autowired
     private CustomerService customerService;
