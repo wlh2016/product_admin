@@ -18,5 +18,9 @@
 		</if>
 		AND delStatus = 0 ORDER BY c.id ASC
 	</select>
+
+	<select id="findById" parameterType="int" resultType="Customer">
+		SELECT * FROM busin_customer WHERE id = #{id} AND delStatus = 0
+	</select>
 	
 </mapper>

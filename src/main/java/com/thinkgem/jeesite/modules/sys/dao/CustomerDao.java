@@ -11,6 +11,6 @@ import com.thinkgem.jeesite.modules.sys.entity.Customer;
 @MyBatisDao
 public interface CustomerDao extends CrudDao<Customer> {
 
-
+    Customer findById(int id);
 
 }

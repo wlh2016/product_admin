@@ -4,6 +4,7 @@ import com.thinkgem.jeesite.common.persistence.Page;
 import com.thinkgem.jeesite.common.web.BaseController;
 import com.thinkgem.jeesite.modules.sys.entity.Customer;
 import com.thinkgem.jeesite.modules.sys.entity.Order;
+import com.thinkgem.jeesite.modules.sys.service.CustomerService;
 import com.thinkgem.jeesite.modules.sys.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,11 +27,24 @@ public class OrderController extends BaseController {
     @Autowired
     private OrderService orderService;
 
+    @Autowired
+    private CustomerService customerService;
+
+    /**
+     * 查询客户订单
+     * @param cid
+     * @param order
+     * @param request
+     * @param response
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/forCustomer/{cid}")
     public String findOrdersByCustomerId(@PathVariable("cid")Integer cid, Order order, HttpServletRequest request, HttpServletResponse response, Model model) {
         model.addAttribute("cid", cid);
         model.addAttribute("order", order);
-        Customer customer = new Customer();
+
+        Customer customer = this.customerService.findById(cid);
         customer.setId(String.valueOf(cid));
         order.setCustomer(customer);
         model.addAttribute("customer", customer);

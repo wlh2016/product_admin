@@ -38,5 +38,7 @@
 		AND delStatus = 0
 		ORDER BY id DESC
 	</select>
+
+
 	
 </mapper>

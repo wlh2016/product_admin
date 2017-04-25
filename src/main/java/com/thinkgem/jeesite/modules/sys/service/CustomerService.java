@@ -18,4 +18,8 @@ public class CustomerService extends CrudService<CustomerDao, Customer> {
     @Autowired
     private CustomerDao customerDao;
 
+    public Customer findById(int cid) {
+        return this.customerDao.findById(cid);
+    }
+
 }
