@@ -2,7 +2,7 @@
 <%@ include file="/WEB-INF/views/include/taglib.jsp"%>
 <html>
 <head>
-	<title>经销商管理</title>
+	<title>客户列表</title>
 	<meta name="decorator" content="default"/>
 	<style type="text/css">
 		a {cursor: pointer;}
