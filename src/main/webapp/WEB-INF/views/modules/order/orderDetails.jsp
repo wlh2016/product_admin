@@ -9,6 +9,14 @@
 	</style>
 	<script type="text/javascript">
 
+		$(function () {
+		    var totalPrice = 0;
+			$(".totalSum").each(function () {
+				totalPrice += parseInt($(this).text());
+            });
+			$("#totalPrice").html(totalPrice);
+        })
+
 		function page(n,s){
 			$("#pageNo").val(n);
 			$("#pageSize").val(s);
@@ -50,7 +58,7 @@
 					<td>${b.countOfPerPackage}</td>
 					<td>${b.packageCount}</td>
 					<td>${b.freight}</td>
-					<td style="color: #1ea84d;">${b.totalPrice}</td>
+					<td style="color: #1ea84d;" class="totalSum">${b.totalPrice}</td>
 					<td>
 						<%--<a href="${ctx}/sys/order/orderDetails/${o.id}">订单明细</a>&nbsp;&nbsp;--%>
 						<a>编辑</a>&nbsp;&nbsp;
@@ -59,14 +67,14 @@
 				</tr>
 			</c:forEach>
 				<tr>
-					<td style="border-width: 0;"></td>
-					<td style="border-width: 0;"></td>
-					<td style="border-width: 0;"></td>
-					<td style="border-width: 0;"></td>
-					<td style="border-width: 0;"></td>
-					<td style="border-width: 0;text-align: right;">合计：</td>
-					<td style="border-width: 0;color: red;font-size: 16px;">${order.totalPrice}</td>
-					<td style="border-width: 0;"></td>
+					<td style="border-right-width: 0;"></td>
+					<td style="border-left-width: 0;"></td>
+					<td style="border-left-width: 0;"></td>
+					<td style="border-left-width: 0;"></td>
+					<td style="border-left-width: 0;"></td>
+					<td style="border-left-width: 0;text-align: right;">合计：</td>
+					<td style="border-left-width: 0;color: red;font-size: 16px;" id="totalPrice">${order.totalPrice}</td>
+					<td style="border-left-width: 0;"></td>
 				</tr>
 		</tbody>
 	</table>

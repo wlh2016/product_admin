@@ -70,7 +70,7 @@ public class OrderController extends BaseController {
     @RequestMapping(value = "/orderDetails/{oid}")
     public String orderDetails(@PathVariable("oid") Integer oid, @RequestParam(value = "unitPrice", required = false) Float unitPrice, Brush brush, HttpServletRequest request, HttpServletResponse response, Model model) {
         if(unitPrice != null) {
-            brush.setUnit_price(unitPrice);
+            brush.setUnitPrice(unitPrice);
         }
         model.addAttribute("oid", oid);
         Order order = this.orderService.findById(oid);
@@ -79,7 +79,6 @@ public class OrderController extends BaseController {
         Page<Brush> page = this.brushService.findPage(new Page<Brush>(request, response), brush);
         model.addAttribute("page", page);
         model.addAttribute("brush", brush);
-        System.out.println(order.getPlaceOrderDate());
         return "modules/order/orderDetails";
     }
 

@@ -40,7 +40,7 @@ public class Brush extends DataEntity<Brush> {
         return unitPrice;
     }
 
-    public void setUnit_price(Float unitPrice) {
+    public void setUnitPrice(Float unitPrice) {
         this.unitPrice = unitPrice;
     }
 

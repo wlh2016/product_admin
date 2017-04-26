@@ -28,7 +28,7 @@
 </head>
 <body>
 	<ul class="nav nav-tabs">
-		<li class="active"><a href="${ctx}/sys/customer">客户列表</a></li>
+		<li class="active"><a href="#">客户列表</a></li>
 	</ul>
 	<form:form id="searchForm" action="${ctx}/sys/customer" method="post" class="breadcrumb form-search">
 		<input id="pageNo" name="pageNo" type="hidden" value="${page.pageNo}"/>
