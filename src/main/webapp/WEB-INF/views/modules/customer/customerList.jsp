@@ -45,7 +45,7 @@
 	</form:form>
 	<sys:message content="${message}"/>
 	<table id="contentTable" class="table table-striped table-bordered table-condensed">
-		<thead><tr><th>序号</th><th>姓名</th><th>手机</th><th>地址</th><th>已结款（RMB）</th><th>待结款（RMB）</th><th>操作</th></thead>
+		<thead><tr><th>序号</th><th>姓名</th><th>手机</th><th>地址</th><th>已付款（元）</th><th>未付款（元）</th><th>操作</th></thead>
 		<tbody>
 			<c:forEach items="${page.list}" var="c" varStatus="st">
 				<tr>
@@ -53,8 +53,8 @@
 					<td><strong>${c.name}</strong></td>
 					<td>${c.phone}</td>
 					<td>${c.address}</td>
-					<td>${c.alreadySettle}</td>
-					<td>${c.nonDeposit}</td>
+					<td style="color: #1ea84d;">${c.alreadySettle}</td>
+					<td style="color: red;">${c.nonDeposit}</td>
 					<td>
 						<a href="${ctx}/sys/order/forCustomer/${c.id}">订单列表</a>&nbsp;&nbsp;
 						<a>编辑</a>&nbsp;&nbsp;

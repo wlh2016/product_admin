@@ -39,6 +39,10 @@
 		ORDER BY id DESC
 	</select>
 
+	<select id="findById" resultType="Order">
+		SELECT DISTINCT * FROM busin_order o WHERE o.id = #{oid} AND delStatus = 0
+	</select>
+
 
 	
 </mapper>

@@ -9,38 +9,46 @@ import com.thinkgem.jeesite.common.persistence.DataEntity;
  */
 public class Brush extends DataEntity<Brush> {
 
-    private float size;                 // 尺寸
-    private float unit_price;           // 每寸单价
-    private int countOfPerPackage;      // 每个包装数量
-    private long packageCount;          // 包装数量
-    private float freight;              // 运费
-    private float totalPrice;           // 总价
+    private Float size;                     // 尺寸
+    private Float unitPrice;                // 每寸单价
+    private Integer countOfPerPackage;      // 每个包装数量
+    private Integer packageCount;           // 包装数量
+    private Integer freight;                // 运费
+    private Float totalPrice;               // 总价
     private boolean delStatus;
 
     @JsonIgnore
     private Order order;
 
-    public float getSize() {
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public Float getSize() {
         return size;
     }
 
-    public void setSize(float size) {
+    public void setSize(Float size) {
         this.size = size;
     }
 
-    public float getUnit_price() {
-        return unit_price;
+    public Float getUnitPrice() {
+        return unitPrice;
     }
 
-    public void setUnit_price(float unit_price) {
-        this.unit_price = unit_price;
+    public void setUnit_price(Float unitPrice) {
+        this.unitPrice = unitPrice;
     }
 
-    public int getCountOfPerPackage() {
+    public Integer getCountOfPerPackage() {
         return countOfPerPackage;
     }
 
-    public void setCountOfPerPackage(int countOfPerPackage) {
+    public void setCountOfPerPackage(Integer countOfPerPackage) {
         this.countOfPerPackage = countOfPerPackage;
     }
 
@@ -48,23 +56,23 @@ public class Brush extends DataEntity<Brush> {
         return packageCount;
     }
 
-    public void setPackageCount(long packageCount) {
+    public void setPackageCount(Integer packageCount) {
         this.packageCount = packageCount;
     }
 
-    public float getFreight() {
+    public Integer getFreight() {
         return freight;
     }
 
-    public void setFreight(float freight) {
+    public void setFreight(Integer freight) {
         this.freight = freight;
     }
 
-    public float getTotalPrice() {
+    public Float getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(float totalPrice) {
+    public void setTotalPrice(Float totalPrice) {
         this.totalPrice = totalPrice;
     }
 
@@ -80,7 +88,7 @@ public class Brush extends DataEntity<Brush> {
     public String toString() {
         return "Brush{" +
                 "size=" + size +
-                ", unit_price=" + unit_price +
+                ", unitPrice=" + unitPrice +
                 ", countOfPerPackage=" + countOfPerPackage +
                 ", packageCount=" + packageCount +
                 ", freight=" + freight +

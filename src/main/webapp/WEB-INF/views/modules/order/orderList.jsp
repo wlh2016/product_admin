@@ -28,9 +28,9 @@
 </head>
 <body>
 	<ul class="nav nav-tabs">
-		<li class="active"><a href="${ctx}/sys/order/forCustomer/${cid}"><span style="color: red;">${customer.name }&nbsp;</span>订单</a></li>
+		<li class="active"><a href="${ctx}/sys/order/forCustomer/${customer.id}"><span style="color: red;">${customer.name }&nbsp;</span>订单</a></li>
 	</ul>
-	<form:form id="searchForm" action="${ctx}/sys/customer/forCustomer/${cid}" method="post" class="breadcrumb form-search">
+	<form:form id="searchForm" action="${ctx}/sys/order/forCustomer/${cid}" method="post" class="breadcrumb form-search">
 		<input id="pageNo" name="pageNo" type="hidden" value="${page.pageNo}"/>
 		<input id="pageSize" name="pageSize" type="hidden" value="${page.pageSize}"/>
 		<div>
@@ -40,7 +40,7 @@
 			<label>发货时间：</label>
 			<input id="deliveryGoodsDate" name="deliveryGoodsDate" type="text" readonly="readonly" maxlength="20" class="input-large Wdate"
 				   value="<fmt:formatDate value="${order.deliveryGoodsDate}" pattern="yyyy-MM-dd"/>" onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:false});"/>
-			<label>是否完成：</label><%--<input name="finishedStatus" type="text" maxlength="40" class="input-mini" value="${customer.address}"/>--%>
+			<label>是否完成：</label>
 			<select id="finishedStatus" name="finishedStatus">
 				<option value="true">是&nbsp;&nbsp;&nbsp;</option>
 				<option value="false">否&nbsp;&nbsp;&nbsp;</option>
@@ -51,7 +51,7 @@
 	</form:form>
 	<sys:message content="${message}"/>
 	<table id="contentTable" class="table table-striped table-bordered table-condensed">
-		<thead><tr><th>序号</th><th>下单时间</th><th>发货时间</th><th>总价</th><th>已结款（RMB）</th><th>待结款（RMB）</th><th>是否完成</th><th>操作</th></thead>
+		<thead><tr><th>序号</th><th>下单时间</th><th>发货时间</th><th>总价</th><th>已付款（元）</th><th>未付款（元）</th><th>是否完成</th><th>操作</th></thead>
 		<tbody>
 			<c:forEach items="${page.list}" var="o" varStatus="st">
 				<tr>
@@ -59,14 +59,19 @@
 					<td>${o.placeOrderDate}</td>
 					<td>${o.deliveryGoodsDate}</td>
 					<td>${o.totalPrice}</td>
-					<td>${o.alreadySettle}</td>
-					<td>${o.nonDeposit}</td>
+					<td style="color: #1ea84d;">${o.alreadySettle}</td>
+					<c:if test="${o.finishedStatus == false}">
+						<td style="color: #f00;">${o.nonDeposit}</td>
+					</c:if>
+					<c:if test="${o.finishedStatus == true}">
+						<td>${o.nonDeposit}</td>
+					</c:if>
 					<td>
-						<c:if test="${delStatus == true}">是</c:if>
-						<c:if test="${delStatus == false}">否</c:if>
+						<c:if test="${o.finishedStatus == true}">是</c:if>
+						<c:if test="${o.finishedStatus == false}">否</c:if>
 					</td>
 					<td>
-						<a href="${ctx}/sys/order">订单明细</a>&nbsp;&nbsp;
+						<a href="${ctx}/sys/order/orderDetails/${o.id}">订单明细</a>&nbsp;&nbsp;
 						<a>编辑</a>&nbsp;&nbsp;
 						<a>删除</a>
 					</td>

@@ -11,6 +11,6 @@ import com.thinkgem.jeesite.modules.sys.entity.Order;
 @MyBatisDao
 public interface OrderDao extends CrudDao<Order> {
 
-
+    Order findById(int oid);
 
 }

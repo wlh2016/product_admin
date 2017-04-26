@@ -18,4 +18,8 @@ public class OrderService extends CrudService<OrderDao, Order> {
     @Autowired
     private OrderDao orderDao;
 
+    public Order findById(int oid) {
+        return this.orderDao.findById(oid);
+    }
+
 }
