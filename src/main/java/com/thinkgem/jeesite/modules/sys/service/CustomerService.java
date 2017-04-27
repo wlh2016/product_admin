@@ -22,4 +22,8 @@ public class CustomerService extends CrudService<CustomerDao, Customer> {
         return this.customerDao.findById(cid);
     }
 
+    public void update(Customer customer) {
+        this.customerDao.update(customer);
+    }
+
 }
