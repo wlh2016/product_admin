@@ -22,5 +22,53 @@
 	<select id="findById" parameterType="int" resultType="Customer">
 		SELECT * FROM busin_customer WHERE id = #{id} AND delStatus = 0
 	</select>
+
+	<!--<update id="update" parameterType="Customer">
+		UPDATE busin_customer SET
+		<if test="name!=null and name!=''">
+			name = #{name},
+		</if>
+		<if test="phone!=null and phone!=''">
+			phone = #{phone},
+		</if>
+		<if test="address!=null and address!=''">
+			address = #{address},
+		</if>
+		<if test="nonDeposit!=null and nonDeposit!=''">
+			nonDeposit = #{nonDeposit},
+		</if>
+		<if test="alreadySettle!=null and alreadySettle!=''">
+			alreadySettle = #{alreadySettle},
+		</if>
+		<if test="delStatus!=null and delStatus!=''">
+			delStatus = #{delStatus},
+		</if>
+		1=1 WHERE id = #{id}
+	</update>-->
+
+	<update id="update" parameterType="Customer">
+		UPDATE busin_customer
+		<trim prefix="set" suffixOverrides=",">
+			<if test="name!=null and name!=''">
+				name = #{name}
+			</if>
+			<if test="phone!=null and phone!=''">
+				phone = #{phone}
+			</if>
+			<if test="address!=null and address!=''">
+				address = #{address}
+			</if>
+			<if test="nonDeposit!=null and nonDeposit!=''">
+				nonDeposit = #{nonDeposit}
+			</if>
+			<if test="alreadySettle!=null and alreadySettle!=''">
+				alreadySettle = #{alreadySettle}
+			</if>
+			<if test="delStatus!=null and delStatus!=''">
+				delStatus = #{delStatus}
+			</if>
+		</trim>
+		WHERE id = #{id}
+	</update>
 	
 </mapper>

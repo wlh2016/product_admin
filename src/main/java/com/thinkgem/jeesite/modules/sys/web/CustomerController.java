@@ -1,6 +1,7 @@
 package com.thinkgem.jeesite.modules.sys.web;
 
 import com.thinkgem.jeesite.common.persistence.Page;
+import com.thinkgem.jeesite.common.utils.StringUtils;
 import com.thinkgem.jeesite.common.web.BaseController;
 import com.thinkgem.jeesite.modules.sys.entity.Customer;
 import com.thinkgem.jeesite.modules.sys.service.CustomerService;
@@ -9,8 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -47,18 +47,34 @@ public class CustomerController extends BaseController {
     }
 
     /**
-     * 修改客户信息
+     * 修改客户信息界面
      * @param cid
      * @param model
      * @return
      */
-    @RequestMapping(value = "/edit/{cid}")
+    @RequestMapping(value = "/edit/{cid}", method = RequestMethod.POST)
     public String edit(@PathVariable(value = "cid") Integer cid, Model model) {
         Customer c = this.customerService.findById(cid);
-        System.out.println(c.toString());
         model.addAttribute("c", c);
-
         return "modules/customer/editCustomer";
+    }
+
+    /**
+     * 修改客户信息
+     * @param customer
+     * @return
+     */
+    @RequestMapping(value = "/editCustomer", method = RequestMethod.POST)
+    @ResponseBody
+    public String editCustomer(@RequestBody Customer customer) {
+        try {
+            //this.customerService.update(customer);
+            System.out.println(customer);
+            return "true";
+        } catch (Exception e) {
+            System.out.println(e);
+            return "false";
+        }
     }
 
 }
