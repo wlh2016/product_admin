@@ -4,11 +4,13 @@ import com.thinkgem.jeesite.common.persistence.Page;
 import com.thinkgem.jeesite.common.web.BaseController;
 import com.thinkgem.jeesite.modules.sys.entity.Customer;
 import com.thinkgem.jeesite.modules.sys.service.CustomerService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +22,8 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 @RequestMapping(value = "${adminPath}/sys/customer")
 public class CustomerController extends BaseController {
+
+    private final static Logger log = LoggerFactory.getLogger(CustomerController.class);
 
     @Autowired
     private CustomerService customerService;
@@ -40,6 +44,21 @@ public class CustomerController extends BaseController {
             model.addAttribute("customer", customer);
         }
         return "modules/customer/customerList";
+    }
+
+    /**
+     * 修改客户信息
+     * @param cid
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/edit/{cid}")
+    public String edit(@PathVariable(value = "cid") Integer cid, Model model) {
+        Customer c = this.customerService.findById(cid);
+        System.out.println(c.toString());
+        model.addAttribute("c", c);
+
+        return "modules/customer/editCustomer";
     }
 
 }

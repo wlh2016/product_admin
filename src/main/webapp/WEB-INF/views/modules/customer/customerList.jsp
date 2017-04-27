@@ -24,6 +24,20 @@
             return false;
         }
 
+		function editCustomer(cid) {
+            top.$.jBox.open("iframe:${ctx}/sys/customer/edit/"+cid, "修改客户信息",700,350,{
+                buttons:{"确定":"ok", "取消":true}, submit:function(v, h, f){
+					if(v == "ok") {
+					    top.$.jBox.tip("修改成功！","info");
+					} else {
+                        top.$.jBox.warning("取消修改？","提示", submit);
+					}
+                }, loaded:function(h){
+                    $(".jbox-content", top.document).css("overflow-y","hidden");
+                }
+            });
+        }
+
 	</script>
 </head>
 <body>
@@ -39,7 +53,7 @@
 			<label>地址：</label><input id="address" name="address" type="text" maxlength="40" class="input-large" value="${customer.address}"/>
 		</div>
 		<div class="controls" style="margin-top: 10px;">
-			&nbsp;&nbsp;<input id="btnSubmit" class="btn btn-primary" type="submit" value="查询"/>
+			&nbsp;&nbsp;<input id="btnSubmit" class="btn btn-primary" type="submit" value="查询" data-loading-text="Seraching..."/>
 			&nbsp;&nbsp;&nbsp;<input class="btn btn-primary" type="button" value="重置" onclick="resetForm();"/>
 		</div>
 	</form:form>
@@ -57,7 +71,7 @@
 					<td style="color: red;">${c.nonDeposit}</td>
 					<td>
 						<a href="${ctx}/sys/order/forCustomer/${c.id}">订单列表</a>&nbsp;&nbsp;
-						<a>编辑</a>&nbsp;&nbsp;
+						<a onclick="editCustomer(${c.id})">编辑</a>&nbsp;&nbsp;
 						<a>删除</a>
 					</td>
 				</tr>
