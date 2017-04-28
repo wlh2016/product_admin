@@ -12,6 +12,7 @@
 <body>
     <form:form action="" method="post">
         <input id="id" name="id" type="hidden" value="${c.id}"/>
+        <input id="delStatus" name="delStatus" type="hidden" value="${c.delStatus}"/>
         <div class="controls" style="margin-top: 30px;">
             <span class="redColor">*</span>&nbsp;&nbsp;姓名：</label>&nbsp;&nbsp;&nbsp;
             <input id="name" name="name" type="text" htmlEscape="false" minlength="2" maxlength="20" class="required" value="${c.name}"/>&nbsp;&nbsp;&nbsp;&nbsp;

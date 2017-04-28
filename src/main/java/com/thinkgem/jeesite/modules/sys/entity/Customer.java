@@ -80,7 +80,8 @@ public class Customer extends DataEntity<Customer> {
     @Override
     public String toString() {
         return "Customer{" +
-                "name='" + name + '\'' +
+                "id='" + super.getId() + '\'' +
+                ", name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
                 ", nonDeposit=" + nonDeposit +

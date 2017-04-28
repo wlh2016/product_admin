@@ -64,12 +64,25 @@ public class CustomerController extends BaseController {
      * @param customer
      * @return
      */
-    @RequestMapping(value = "/editCustomer", method = RequestMethod.POST)
+    @RequestMapping(value = "/editCustomer", method = RequestMethod.POST, consumes = "application/json")
     @ResponseBody
     public String editCustomer(@RequestBody Customer customer) {
         try {
-            //this.customerService.update(customer);
-            System.out.println(customer);
+            this.customerService.update(customer);
+            return "true";
+        } catch (Exception e) {
+            System.out.println(e);
+            return "false";
+        }
+    }
+
+    @RequestMapping(value = "/delete/{cid}", method = RequestMethod.POST)
+    @ResponseBody
+    public String delete(@PathVariable(value = "cid") int cid) {
+        try {
+            Customer customer = this.customerService.findById(cid);
+            customer.setDelStatus(true);
+            this.customerService.update(customer);
             return "true";
         } catch (Exception e) {
             System.out.println(e);
