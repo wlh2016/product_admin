@@ -20,6 +20,9 @@ public class CustomerService extends CrudService<CustomerDao, Customer> {
     @Autowired
     private CustomerDao customerDao;
 
+    @Autowired
+    private TaskService taskService;
+
     public Customer findById(int cid) {
         return this.customerDao.findById(cid);
     }
@@ -27,6 +30,10 @@ public class CustomerService extends CrudService<CustomerDao, Customer> {
     @Transactional(isolation = Isolation.DEFAULT, propagation = Propagation.REQUIRED, readOnly = false)
     public void update(Customer customer) {
         this.customerDao.update(customer);
+    }
+
+    public void test() throws InterruptedException {
+        this.taskService.test();
     }
 
 }
