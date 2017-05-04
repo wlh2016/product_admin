@@ -90,4 +90,15 @@ public class CustomerController extends BaseController {
         }
     }
 
+    @RequestMapping(value = "/taskTest/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public String taskTest(@PathVariable(value = "id") String id) {
+        try {
+            this.customerService.test();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return id;
+    }
+
 }
